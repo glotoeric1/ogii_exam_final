@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "431668850595",
+    "project_id": "ogii2-434b6",
+    "storage_bucket": "ogii2-434b6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:431668850595:android:388e01508fa5436c30f416",
+        "android_client_info": {
+          "package_name": "com.example.ogiiapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "431668850595-01hcrfhkq2gocfei4i11q1psqs7rnlhb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGQ_9LpQwYhmIOfZtQIaR6xKMtdln2r2Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "431668850595-01hcrfhkq2gocfei4i11q1psqs7rnlhb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
