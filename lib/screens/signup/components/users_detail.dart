@@ -32,6 +32,7 @@ class UsersList extends StatelessWidget {
             return ListView(
               children: snapshot.data!.docs.map((doc) {
                 return Card(
+                  elevation: 3,
                   child: ListTile(
                     leading: CircleAvatar(
                       radius: 30,
