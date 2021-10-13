@@ -6,7 +6,7 @@ import '../../../widgets/bottoms/title_text.dart';
 import '../../../widgets/bottoms/bottom_text.dart';
 
 class BodyScreenComponent extends StatelessWidget {
-  static const String snackBarTxt = "Cette option ne pas disponible ";
+  static const String snackBarTxt = "Sera disponible bientôt";
   const BodyScreenComponent({Key? key}) : super(key: key);
 
   Expanded customCard(

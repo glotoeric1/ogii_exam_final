@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 //import 'package:ogiiapp/database/user_database.dart';
 //import 'package:ogiiapp/models/users_database.dart';
 //import 'package:ogiiapp/models/users_model.dart';
@@ -32,7 +33,37 @@ class UsersList extends StatelessWidget {
               children: snapshot.data!.docs.map((doc) {
                 return Card(
                   child: ListTile(
-                    title: Text(doc['prenom'] + ' ' + doc['nom']),
+                    leading: CircleAvatar(
+                      radius: 30,
+                      backgroundColor: Colors.orange.shade900,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: Text('User'),
+                      ),
+                    ),
+                    title: Text(
+                      doc['prenom'] + ' ' + doc['nom'],
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.orange.shade900,
+                      ),
+                    ),
+                    subtitle: Text(
+                      //doc['createdAt'],
+                      DateFormat.yMMMMd().format(doc['createdAt'].toDate()),
+                      textAlign: TextAlign.center,
+                    ),
+                    trailing: IconButton(
+                      icon: const Icon(Icons.delete),
+                      color: Colors.red,
+                      onPressed: () {
+                        //delete(doc[0].reference.id);
+
+                        //docs[0].reference.id.toString()
+                      },
+                    ),
                   ),
                 );
               }).toList(),

@@ -5,7 +5,7 @@ import 'package:ogiiapp/screens/signup/components/users_detail.dart';
 import '../../screens/formulaire/acte_screen.dart';
 
 class MainDrawer extends StatelessWidget {
-  static const String snackBarTxt = "Sera disponible bientot !";
+  static const String snackBarTxt = "Sera disponible bientôt";
   const MainDrawer({Key? key}) : super(key: key);
 
   Widget listTileBuilder(
@@ -67,7 +67,7 @@ class MainDrawer extends StatelessWidget {
           ),
           listTileBuilder(
             listTitle: "Utilisateurs",
-            listIcon: Icons.approval,
+            listIcon: Icons.account_circle,
             onPressHandler: () {
               Navigator.pushNamed(context, UsersList.routeName);
             },

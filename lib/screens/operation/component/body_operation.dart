@@ -22,7 +22,13 @@ class BodyOperation extends StatelessWidget {
           CustomGridView(
             iconData: Icons.file_copy,
             showTxt: "Certification de diplome",
-            btnHandler: () {},
+            btnHandler: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('Sera disponible bientôt'),
+                ),
+              );
+            },
           ),
         ],
       ),

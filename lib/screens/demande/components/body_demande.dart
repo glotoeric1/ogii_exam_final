@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class DemandeBody extends StatefulWidget {
   DemandeBody({Key? key}) : super(key: key);
@@ -10,6 +11,7 @@ class DemandeBody extends StatefulWidget {
 
 class _DemandeBodyState extends State<DemandeBody> {
   final db = FirebaseFirestore.instance;
+  var snackBarTxt = 'Une notification envoye';
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +29,41 @@ class _DemandeBodyState extends State<DemandeBody> {
                 return Card(
                   elevation: 3,
                   child: ListTile(
-                      title: Text(doc['userPrenom'] + ' ' + doc['userNom']),
-                      onTap: () {
-                        setState(() {
-                          delete(doc['email']);
-                        });
-                      }),
+                    leading: CircleAvatar(
+                      radius: 30,
+                      backgroundColor: Colors.orange.shade900,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: Text(
+                            DateFormat.MMM().format(doc['createdAt'].toDate())),
+                      ),
+                    ),
+                    title: Text(
+                      doc['userPrenom'] + ' ' + doc['userNom'],
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.orange.shade900,
+                      ),
+                    ),
+                    subtitle: Text(
+                      //doc['createdAt'],
+                      DateFormat.yMMMMd().format(doc['createdAt'].toDate()),
+                      textAlign: TextAlign.center,
+                    ),
+                    trailing: IconButton(
+                      icon: const Icon(Icons.access_alarm),
+                      color: Colors.green,
+                      onPressed: () {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(snackBarTxt),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
                 );
               }).toList(),
             );
