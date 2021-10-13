@@ -13,6 +13,7 @@ class UsersList extends StatelessWidget {
 
   //UserDatabase? db;
   final db = FirebaseFirestore.instance;
+  var snackBarTxt = "l'access Non autorizer";
 
   @override
   Widget build(BuildContext context) {
@@ -60,9 +61,11 @@ class UsersList extends StatelessWidget {
                       icon: const Icon(Icons.delete),
                       color: Colors.red,
                       onPressed: () {
-                        //delete(doc[0].reference.id);
-
-                        //docs[0].reference.id.toString()
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(snackBarTxt),
+                          ),
+                        );
                       },
                     ),
                   ),

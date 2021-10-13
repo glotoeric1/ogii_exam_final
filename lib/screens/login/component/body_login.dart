@@ -87,8 +87,13 @@ class _BodyLoginState extends State<BodyLogin> {
                         btnText: "Connexion",
                         btnOnPressAction: () {
                           //next route
-
-                          loginLogic(userEmail!.text, userPassword!.text);
+                          //loginLogic(userEmail!.text, userPassword!.text);
+                          if (userEmail!.text.isEmpty ||
+                              userPassword!.text.isEmpty) {
+                            userEmail!.text = 'h';
+                          }
+                          loginLogic(
+                              email: userEmail!.text, pass: userPassword!.text);
                         },
                         btnIcon: Icons.login_rounded,
                       ),
@@ -187,7 +192,8 @@ class _BodyLoginState extends State<BodyLogin> {
     );
   }
 
-  Future<String?> loginLogic(String email, String pass) async {
+  Future<String?> loginLogic(
+      {required String email, required String pass}) async {
     QuerySnapshot querySnapshot;
     try {
       querySnapshot = await firestore!
@@ -199,7 +205,7 @@ class _BodyLoginState extends State<BodyLogin> {
       if (querySnapshot.docs.isEmpty) {
         userCheck = false;
         _showAlertDialog(
-            title: 'Connexion - Erreur',
+            title: 'Connexion',
             message: "Nom utilisateur et mot de passe iccorrect");
       } else if (querySnapshot.docs.isNotEmpty) {
         userCheck = true;
@@ -211,7 +217,7 @@ class _BodyLoginState extends State<BodyLogin> {
       } else {
         userCheck = false;
         _showAlertDialog(
-            title: 'Connexion - Erreur',
+            title: 'Erreur',
             message: "Nom utilisateur et mot de passe iccorrect");
       }
     } catch (e) {

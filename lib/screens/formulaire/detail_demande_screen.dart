@@ -12,6 +12,7 @@ class DetailDemandeScreen extends StatefulWidget {
 
 class _DetailDemandeScreenState extends State<DetailDemandeScreen> {
   final db = FirebaseFirestore.instance;
+  var snackBarTxt = "l'access non autorizer";
 
   @override
   Widget build(BuildContext context) {
@@ -62,16 +63,12 @@ class _DetailDemandeScreenState extends State<DetailDemandeScreen> {
                       onPressed: () {
                         //delete(doc[0].reference.id);
 
-                        //docs[0].reference.id.toString()
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(snackBarTxt),
+                          ),
+                        );
                       },
-
-                      /*
-                      onPressed: () async {
-                        await db
-                            .collection('users')
-                            .doc('olgKbONSO0FWKNSWXpc6')
-                            .delete();
-                      },*/
                     ),
                   ),
                 );
