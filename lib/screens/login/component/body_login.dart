@@ -87,6 +87,7 @@ class _BodyLoginState extends State<BodyLogin> {
                         btnText: "Connexion",
                         btnOnPressAction: () {
                           //next route
+
                           loginLogic(userEmail!.text, userPassword!.text);
                         },
                         btnIcon: Icons.login_rounded,
@@ -188,14 +189,19 @@ class _BodyLoginState extends State<BodyLogin> {
 
   Future<String?> loginLogic(String email, String pass) async {
     QuerySnapshot querySnapshot;
-
     try {
       querySnapshot = await firestore!
           .collection('users')
           .where('email', isEqualTo: email)
           .where('passwords', isEqualTo: pass)
           .get();
-      if (querySnapshot.docs.isNotEmpty) {
+
+      if (querySnapshot.docs.isEmpty) {
+        userCheck = false;
+        _showAlertDialog(
+            title: 'Connexion - Erreur',
+            message: "Nom utilisateur et mot de passe iccorrect");
+      } else if (querySnapshot.docs.isNotEmpty) {
         userCheck = true;
         Navigator.pushNamed(
           context,
